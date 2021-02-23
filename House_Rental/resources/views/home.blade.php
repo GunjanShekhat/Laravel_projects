@@ -4,6 +4,13 @@
 <head>
      <meta name="viewport" content="width=device-width, initial-scale=1">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <!-- BOOTSTRAP CDN -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+     </script> <!-- Latest compiled and minified CSS -->
+     <!-- BOOTSTRAP CDN END-->
 
      <style>
      * {
@@ -49,6 +56,7 @@
 
      .header-right {
           float: right;
+          border-right: 3px solid black;
      }
 
      .header-right a {
@@ -228,10 +236,19 @@
      <div class="header">
           <a href="/" class="logo"><img src="{{url('/images/xento.jpg')}}" alt="Image" height="50px"
                     width="100px;" /></a>
-          <div class="header-right" style="float:right;" id="myTopnav">
-               <a class="active" href="#home">Home</a>
+
+          <div class="header-right">
+
+               <!-- <a href="profile">{{session('user')}}</a> -->
+               <a href="login" style="background-color:lightblue;">Login / Sign Up</a>
+               <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                    <i class="fa fa-bars"></i>
+               </a>
+          </div>
+          <div class="header-right" id="myTopnav">
+               <a class="active">Home</a>
                <a href="#browse_houses">Browse Houses</a>
-               <a href="#contact">Contact</a>
+               <a href="contact">Contact</a>
                <a href="#about">About</a>
                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                     <i class="fa fa-bars"></i>
