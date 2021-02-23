@@ -29,6 +29,13 @@ Route::get('/login', function () {
     return view('login');
 });
 
+Route::get('/houseDetails', function () {
+    if(session()->has('user')){
+        return view('houseDetails');
+    }
+    return view('houseDetails');
+});
+
 Route::get('/profile', function () {
     if(session()->has('user')){
         return view('userProfile');
