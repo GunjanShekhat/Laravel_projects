@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserAuth;
+use App\Http\Controllers\house_detail_controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,3 +55,17 @@ Route::get('/logout', function () {
 Route::get('/contact', function () {
     return view('contact');
 });
+
+
+// Route::resource('house', 'App\Http\Controllers\house_detail_controller');
+Route::get('/addHouseDetail', [house_detail_controller::class,'addHouseDetail']);
+Route::post('/create-house',[house_detail_controller::class,'createHouse'])->name('house.create');
+
+Route::post('/editHouseDetail', [house_detail_controller::class,'editHouseDetail'])->name('house.update');
+Route::get('/edit-house/{id}',[house_detail_controller::class,'editHouse'])->name('house.edit');
+
+Route::get('/delete-house/{id}',[house_detail_controller::class,'deleteHouse'])->name('house.delete');
+
+Route::get('/browseHouse',[house_detail_controller::class,'getHouse']);
+
+Route::get('/myHouse',[house_detail_controller::class,'getMyHouse']);

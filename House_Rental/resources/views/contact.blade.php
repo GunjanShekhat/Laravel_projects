@@ -306,9 +306,7 @@
           height: 200px;
           padding: 50px;
           border: 1px solid black;
-          float: left;
           margin: 40px;
-          padding: 20px;
           border-radius: 15px;
           text-align: center;
           justify-content: center;
@@ -335,11 +333,17 @@
           color: blue;
           text-decoration: underline;
      }
+
+     .sticky {
+          position: fixed;
+          top: 0;
+          width: 100%;
+     }
      </style>
 </head>
 
 <body>
-     <div class="header">
+     <div class="header" id="myheader">
           <a href="/" class="logo"><img src="{{url('/images/xento.jpg')}}" alt="Image" height="50px"
                     width="100px;" /></a>
 
@@ -353,7 +357,8 @@
           </div>
           <div class="header-right" id="myTopnav">
                <a href="home">Home</a>
-               <a href="#browse_houses">Browse Houses</a>
+               <a href="myHouse">My Houses</a>
+               <a href="browseHouses">Browse Houses</a>
                <a class="active">Contact</a>
                <a href="#about">About</a>
                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -374,31 +379,34 @@
 
                </section>
 
-
-               <div class="col-3 c_items">
-                    <h5><i style='font-size:48px' class='fas'>&#xf3c5;</i><br><br>
-                         <a href="https://www.google.com/maps/place/Xento+Systems/@18.5169091,73.9221283,17z/data=!3m1!4b1!4m5!3m4!1s0x3bc2c18df4a41197:0xa8d02fcea99cd3d4!8m2!3d18.5169091!4d73.924317"
-                              target="_blank">
-                              Xento Systems <br> Magarpatta, Pune
-                         </a>
-                    </h5>
-               </div>
-               <div class="col-3 c_items">
-                    <h5><i style='font-size:48px' class='fas'>&#xf095;</i><br><br>
-                         <a href="tel:+917887675978">+91 7887675978</a>
-                         <a href="tel:+917228035555">+91 7228035555</a>
-                    </h5>
-               </div>
-               <div class="col-3 c_items">
-                    <h5><i style="font-size:48px" class="fa">&#xf0e0;</i><br><br>
-                         <a href="mailto:mail@example.com">shekhatgunjan98@gmail.com</a>
-                         <a href="mailto:info@example.com">patelgunjan98@gmail.com</a>
-                    </h5>
+               <div>
+                    <div class="row">
+                         <div class="col-lg-3 col-md-12 col-sm-12 c_items">
+                              <h5><i style='font-size:48px' class='fas'>&#xf3c5;</i><br><br>
+                                   <a href="https://www.google.com/maps/place/Xento+Systems/@18.5169091,73.9221283,17z/data=!3m1!4b1!4m5!3m4!1s0x3bc2c18df4a41197:0xa8d02fcea99cd3d4!8m2!3d18.5169091!4d73.924317"
+                                        target="_blank">
+                                        Xento Systems <br> Magarpatta, Pune
+                                   </a>
+                              </h5>
+                         </div>
+                         <div class="col-lg-3 col-md-12 col-sm-12 c_items">
+                              <h5><i style='font-size:48px' class='fas'>&#xf095;</i><br><br>
+                                   <a href="tel:+917887675978">+91 7887675978</a>
+                                   <a href="tel:+917228035555">+91 7228035555</a>
+                              </h5>
+                         </div>
+                         <div class="col-lg-3 col-md-12 col-sm-12 c_items">
+                              <h5><i style="font-size:48px" class="fa">&#xf0e0;</i><br><br>
+                                   <a href="mailto:mail@example.com">shekhatgunjan98@gmail.com</a>
+                                   <a href="mailto:info@example.com">patelgunjan98@gmail.com</a>
+                              </h5>
+                         </div>
+                    </div>
                </div>
 
                <section class=" section2 clearfix">
                     <div class="col2 column1 first">
-                         <iframe width="600" height="500" id="gmap_canvas"
+                         <iframe width="100%" height="500" id="gmap_canvas"
                               src="https://maps.google.com/maps?q=Xento%20Systems&t=&z=15&ie=UTF8&iwloc=&output=embed"
                               frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
                     </div>
@@ -428,6 +436,22 @@
 
           </div>
      </div>
+
+     <script>
+     window.onscroll = function() {
+          myScroll()
+     }
+     var sticky = document.getElementById('myheader').offsetTop;
+
+     function myScroll() {
+          if (window.pageYOffset > sticky) {
+               document.getElementById('myheader').classList.add("sticky");
+          } else {
+               document.getElementById('myheader').classList.remove("sticky");
+          }
+
+     }
+     </script>
 </body>
 
 </html>

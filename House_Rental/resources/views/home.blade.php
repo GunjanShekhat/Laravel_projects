@@ -247,7 +247,8 @@
           </div>
           <div class="header-right" id="myTopnav">
                <a class="active">Home</a>
-               <a href="#browse_houses">Browse Houses</a>
+               <a href="myHouse">My Houses</a>
+               <a href="browseHouse">Browse Houses</a>
                <a href="contact">Contact</a>
                <a href="#about">About</a>
                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -318,6 +319,14 @@
           } else {
                x.className = "header-right";
           }
+     }
+
+     window.onscroll = function() {
+          myScroll()
+     }
+
+     function myScroll() {
+          _scroll('header', 100, 'slideDown', 0, '-50px')
      }
      </script>
 
