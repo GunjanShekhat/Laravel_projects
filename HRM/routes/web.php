@@ -27,3 +27,5 @@ Route::get('signup', function () {
     return view('User/signup');
 });
 Route::post('userCreate',[UserController::class,'userCreate']);
+
+Route::get('Profile',[UserController::class,'editProfile']);

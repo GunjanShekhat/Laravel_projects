@@ -11,8 +11,8 @@ class UserController extends Controller
         $user = User::where('userEmail',$req->Email)->get()->first();
         if(!empty($user)){
             if ($req->Password === $user->userPassword) {
-               $req->session()->put('user_name',$user->userName);
-               return view('dashboard'); 
+               $req->session()->put('user_email',$user->userEmail);
+               return redirect('Profile'); 
             } else {
                 return back()->with('pass_error','Password is Incorrect');
             }
@@ -35,5 +35,15 @@ class UserController extends Controller
         $user->userOccupation = $req->u_occupation;
         $user->save();
         return redirect('login')->with('user_created','User has been successfully Created!!');
+    }
+
+    function editProfile(){
+        $userDetail = User::where('userEmail',session()->get('user_email'))->get()->first();
+        return view('user/profile',compact('userDetail'));
+    }
+
+    function updateProfile(Request $req){
+        User::where('userEmail', $req->u_email)->update(['userName' => $req->u_name,'userAddress' => $req->u_address,'userArea' => $req->u_area, 'userCity' => $req->u_city, 'userState' => $req->u_state, 'userOccupation' => $req->u_occupation]);
+        return redirect('/');
     }
 }
