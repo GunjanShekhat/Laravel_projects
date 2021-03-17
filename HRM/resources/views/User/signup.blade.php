@@ -179,6 +179,9 @@
                     </div>
                     <div class="card-footer">
                          <div class="d-flex justify-content-center links">
+                              <a href="/">Back to Home</a>
+                         </div>
+                         <div class="d-flex justify-content-center links">
                               Already have an account?<a href="login">Sign in</a>
                          </div>
                     </div>

@@ -30,7 +30,7 @@
      }
 
      .card {
-          height: 370px;
+          height: auto;
           margin-top: auto;
           margin-bottom: auto;
           width: 400px;
@@ -137,12 +137,16 @@
                          <div class="row align-items-center remember">
                               <input type="checkbox">Remember Me
                          </div>
-                         <div class="form-group">
+                         <div class=" form-group">
                               <input type="submit" value="Login" class="btn login_btn">
                          </div>
                     </form>
                </div>
                <div class="card-footer">
+                    <div class="d-flex justify-content-center">
+                         <a href="/">Return to Home</a>
+                    </div>
+
                     <div class="d-flex justify-content-center links">
                          Don't have an account?<a href="signup">Sign Up</a>
                     </div>

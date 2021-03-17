@@ -73,10 +73,10 @@
           margin-left: 4px;
      }
      </style>
+
 </head>
 
 <body>
-
      @if(Session::has('user_error'))
      <div class="alert-danger" role="alert" style="margin-top:50px;">
           <center>
@@ -180,7 +180,7 @@
                     </div>
                     <div class="card-footer">
                          <div class="d-flex justify-content-center links">
-                              Already have an account?<a href="login">Sign in</a>
+                              <a href="/">Back to home</a>
                          </div>
                     </div>
                </div>

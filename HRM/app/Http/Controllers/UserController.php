@@ -12,7 +12,9 @@ class UserController extends Controller
         if(!empty($user)){
             if ($req->Password === $user->userPassword) {
                $req->session()->put('user_email',$user->userEmail);
-               return redirect('Profile'); 
+               $req->session()->put('user_name',$user->userName);
+               $req->session()->put('user_id',$user->userId);
+               return redirect('/'); 
             } else {
                 return back()->with('pass_error','Password is Incorrect');
             }
@@ -38,8 +40,13 @@ class UserController extends Controller
     }
 
     function editProfile(){
-        $userDetail = User::where('userEmail',session()->get('user_email'))->get()->first();
-        return view('user/profile',compact('userDetail'));
+        if (session()->has('user_email')) {
+            $userDetail = User::where('userEmail', session()->get('user_email'))->get()->first();
+            return view('user/profile', compact('userDetail'));
+        }
+        else{
+            return redirect('/login');
+        }
     }
 
     function updateProfile(Request $req){
