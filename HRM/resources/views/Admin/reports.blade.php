@@ -79,8 +79,8 @@
 <body>
 
      <div class="sidebar">
-          <a class="active" href="/dashboard">Home</a>
-          <a href="/reports">Reports</a>
+          <a href="/dashboard">Home</a>
+          <a class="active" href="/reports">Reports</a>
           <a href="/users">Users</a>
           <a href="/houses">Houses</a>
      </div>
@@ -89,18 +89,30 @@
           <div class="container">
                <div class="row">
                     <div class="card col-lg-3">
-                         <a href="/users">
+                         <a href="/usersPDF">
                               <div class="card-body">
-                                   <p>{{ count($users) }}</p>
-                                   <p>Users</p>
+                                   <p>All Users</p>
                               </div>
                          </a>
                     </div>
                     <div class="card col-lg-3">
-                         <a href="/houses">
+                         <a href="/latestUsersPDF">
                               <div class="card-body">
-                                   <p>{{ count($houses) }}</p>
-                                   <p>Houses</p>
+                                   <p>Latest Registered Users</p>
+                              </div>
+                         </a>
+                    </div>
+                    <div class="card col-lg-3">
+                         <a href="/housesPDF">
+                              <div class="card-body">
+                                   <p>All Houses</p>
+                              </div>
+                         </a>
+                    </div>
+                    <div class="card col-lg-3">
+                         <a href="/latestHousesPDF">
+                              <div class="card-body">
+                                   <p>Latest Houses</p>
                               </div>
                          </a>
                     </div>

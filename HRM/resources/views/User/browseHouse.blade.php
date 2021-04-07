@@ -28,26 +28,34 @@
                </div>
                <div class="row row-30">
                     @foreach($house as $house)
+                    @if($house->userIdForeign != session()->get('user_id'))
                     <div class="col-sm-6 col-lg-4">
                          <!-- Post-->
-                         <article class="product">
-                              <div class="product-media"><img class="product-img" src="images/home-01-370x290.jpg"
-                                        alt="" width="370" height="290" />
-                                   <div class="product-price">{{ $house->houseRentPerMonth }}/mo</div>
-                              </div>
-                              <div class="product-body">
-                                   <div class="product-title">
-                                        <h5><a href="single-property.html">{{ $house->houseArea }},
-                                                  {{ $house->houseCity }}</a></h5>
+                         <a href="/singleHouse?id={{ $house->houseId }}">
+                              <article class="product">
+                                   <div class="product-media"><img class="product-img" src="images/home-01-370x290.jpg"
+                                             alt="" width="370" height="290" />
+                                        <div class="product-price">{{ $house->houseRentPerMonth }}/mo</div>
                                    </div>
-                                   <div class="product-meta">
-                                        <div class="group"><span>{{ $house->totalBathrooms }}
-                                                  Bathrooms</span><span>{{ $house->totalBedrooms }} Bedrooms</span>
+                                   <div class="product-body">
+                                        <div class="product-title">
+                                             <h3>{{ $house->houseName }}
+                                             </h3>
+                                             <h6>{{ $house->houseArea }},
+                                                  {{ $house->houseCity }}</h6>
+                                        </div>
+                                        <div class="product-meta">
+                                             <div class="group"><span>{{ $house->totalBedrooms }}
+                                                       Bedrooms</span><span
+                                                       style="float:right;">{{ $house->totalBathrooms }}
+                                                       Bathrooms</span>
+                                             </div>
                                         </div>
                                    </div>
-                              </div>
-                         </article>
+                              </article>
+                         </a>
                     </div>
+                    @endif
                     @endforeach
                </div>
           </div>
@@ -62,26 +70,34 @@
                </div>
                <div class="row row-30">
                     @foreach($cheapHouse as $cheapHouse)
+                    @if($cheapHouse->userIdForeign != session()->get('user_id'))
                     <div class="col-sm-6 col-lg-4">
                          <!-- Post-->
-                         <article class="product">
-                              <div class="product-media"><img class="product-img" src="images/home-01-370x290.jpg"
-                                        alt="" width="370" height="290" />
-                                   <div class="product-price">{{ $cheapHouse->houseRentPerMonth }}/mo</div>
-                              </div>
-                              <div class="product-body">
-                                   <div class="product-title">
-                                        <h5><a href="single-property.html">{{ $cheapHouse->houseArea }},
-                                                  {{ $cheapHouse->houseCity }}</a></h5>
+                         <a href="/singleHouse?id={{ $cheapHouse->houseId }}">
+                              <article class="product">
+                                   <div class="product-media"><img class="product-img" src="images/home-01-370x290.jpg"
+                                             alt="" width="370" height="290" />
+                                        <div class="product-price">{{ $cheapHouse->houseRentPerMonth }}/mo</div>
                                    </div>
-                                   <div class="product-meta">
-                                        <div class="group"><span>{{ $cheapHouse->totalBathrooms }}
-                                                  Bathrooms</span><span>{{ $cheapHouse->totalBedrooms }} Bedrooms</span>
+                                   <div class="product-body">
+                                        <div class="product-title">
+                                             <h3>{{ $cheapHouse->houseName }}
+                                             </h3>
+                                             <h6>{{ $cheapHouse->houseArea }},
+                                                  {{ $cheapHouse->houseCity }}</h6>
+                                        </div>
+                                        <div class="product-meta">
+                                             <div class="group"><span>{{ $cheapHouse->totalBedrooms }}
+                                                       Bedrooms</span>
+                                                  <span style="float:right;">{{ $cheapHouse->totalBathrooms }}
+                                                       Bathrooms</span>
+                                             </div>
                                         </div>
                                    </div>
-                              </div>
-                         </article>
+                              </article>
+                         </a>
                     </div>
+                    @endif
                     @endforeach
                </div>
           </div>

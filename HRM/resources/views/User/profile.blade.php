@@ -114,7 +114,7 @@
                                         <span class="input-group-text"><i class="fas fa-key"></i></span>
                                    </div>
                                    <input type="password" class="form-control" name="u_password"
-                                        value="{{ $userDetail->userPassword}}" required>
+                                        value="{{ $userDetail->userPassword}}" disabled required>
                               </div>
 
                               <div class="input-group form-group">
@@ -122,7 +122,7 @@
                                         <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                                    </div>
                                    <input type="text" class="form-control" name="u_email"
-                                        value="{{ $userDetail->userEmail}}" disabled required>
+                                        value="{{ $userDetail->userEmail}}" readonly required>
                               </div>
 
                               <div class="input-group form-group">

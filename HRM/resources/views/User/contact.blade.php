@@ -76,29 +76,25 @@
                          <div class="col-md-7 col-lg-8">
                               <h4>Get in Touch</h4>
                               <p class="xsmall">Required fields are followed by *</p>
+                              @if(Session::has('mailSent'))
+                              <div class="alert alert-success" role="alert">
+                                   {{ Session::get('mailSent') }}
+                              </div>
+                              @endif
                               <!-- RD Mailform-->
-                              <form class="rd-mailform rd-mailform_style-1" data-form-output="form-output-global"
-                                   data-form-type="contact" method="post"
-                                   action="https://ld-wt73.template-help.com/tf/estancy_v1/bat/rd-mailform.php">
+                              <form action="{{route('contactFormMail')}}" class="rd-mailform rd-mailform_style-1"
+                                   method="post">
+                                   @csrf
                                    <div class="form-wrap">
-                                        <label class="form-label-outside" for="contact-first-name">First Name:*</label>
-                                        <input class="form-input" id="contact-first-name" type="text" name="first-name"
+                                        <label class="form-label-outside" for="contact-first-name">Full
+                                             Name:*</label>
+                                        <input class="form-input" id="contact-first-name" type="text" name="name"
                                              data-constraints="@Required" placeholder="First Name" />
-                                   </div>
-                                   <div class="form-wrap">
-                                        <label class="form-label-outside" for="contact-last-name">Last Name:* </label>
-                                        <input class="form-input" id="contact-last-name" type="text" name="last-name"
-                                             data-constraints="@Required" placeholder="Last Name" />
                                    </div>
                                    <div class="form-wrap">
                                         <label class="form-label-outside" for="contact-email">Email:*</label>
                                         <input class="form-input" id="contact-email" type="email" name="email"
                                              data-constraints="@Email @Required" placeholder="Email" />
-                                   </div>
-                                   <div class="form-wrap">
-                                        <label class="form-label-outside" for="contact-phone">Phone:*</label>
-                                        <input class="form-input" id="contact-phone" type="text" name="phone"
-                                             data-constraints="@Numeric @Required" placeholder="Phone" />
                                    </div>
                                    <div class="form-wrap">
                                         <label class="form-label-outside" for="contact-message">Message:*</label>

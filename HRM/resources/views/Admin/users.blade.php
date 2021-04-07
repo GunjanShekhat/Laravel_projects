@@ -6,7 +6,7 @@
      <link rel="stylesheet" href="css/bootstrap.css" />
      <style>
      .card {
-          margin: 35px;
+          margin: 5px;
           background-color: lightgrey;
           color: black;
           font-weight: bold;
@@ -73,39 +73,52 @@
                float: none;
           }
      }
+
+     table {
+          border-collapse: collapse;
+          width: 100%;
+     }
+
+     table td,
+     th {
+          border: 1px solid #ddd;
+          padding: 10px;
+     }
      </style>
 </head>
 
 <body>
 
      <div class="sidebar">
-          <a class="active" href="/dashboard">Home</a>
+          <a href="/dashboard">Home</a>
           <a href="/reports">Reports</a>
-          <a href="/users">Users</a>
+          <a class="active" href="/users">Users</a>
           <a href="/houses">Houses</a>
      </div>
 
      <div class="content">
-          <div class="container">
-               <div class="row">
-                    <div class="card col-lg-3">
-                         <a href="/users">
-                              <div class="card-body">
-                                   <p>{{ count($users) }}</p>
-                                   <p>Users</p>
-                              </div>
-                         </a>
-                    </div>
-                    <div class="card col-lg-3">
-                         <a href="/houses">
-                              <div class="card-body">
-                                   <p>{{ count($houses) }}</p>
-                                   <p>Houses</p>
-                              </div>
-                         </a>
-                    </div>
-               </div>
-          </div>
+          <table>
+               <thead>
+                    <tr>
+                         <th>ID</th>
+                         <th>Name</th>
+                         <th>Email</th>
+                         <th>Occupation</th>
+                         <th>Contact</th>
+                    </tr>
+               </thead>
+               <tbody>
+                    @foreach($users as $user)
+                    <tr>
+                         <td>{{ $user->userId }}</td>
+                         <td>{{ $user->userName }}</td>
+                         <td>{{ $user->userEmail }}</td>
+                         <td>{{ $user->userOccupation }}</td>
+                         <td>{{ $user->userContactNo }}</td>
+                    </tr>
+                    @endforeach
+               </tbody>
+          </table>
      </div>
 
 </body>

@@ -11,7 +11,7 @@ class houseDetail extends Model
 
     protected $fillable = [
         'houseName',
-        'house',
+        'userID',
         'houseRentPerMonth',
         'houseRentPerDay',
         'totalBedrooms',

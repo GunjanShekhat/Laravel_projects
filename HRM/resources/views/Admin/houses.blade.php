@@ -6,7 +6,7 @@
      <link rel="stylesheet" href="css/bootstrap.css" />
      <style>
      .card {
-          margin: 35px;
+          margin: 5px;
           background-color: lightgrey;
           color: black;
           font-weight: bold;
@@ -73,39 +73,54 @@
                float: none;
           }
      }
+
+     table {
+          border-collapse: collapse;
+          width: 100%;
+     }
+
+     table td,
+     th {
+          border: 1px solid #ddd;
+          padding: 10px;
+     }
      </style>
 </head>
 
 <body>
 
      <div class="sidebar">
-          <a class="active" href="/dashboard">Home</a>
+          <a href="/dashboard">Home</a>
           <a href="/reports">Reports</a>
           <a href="/users">Users</a>
-          <a href="/houses">Houses</a>
+          <a class="active" href="/houses">Houses</a>
      </div>
 
      <div class="content">
-          <div class="container">
-               <div class="row">
-                    <div class="card col-lg-3">
-                         <a href="/users">
-                              <div class="card-body">
-                                   <p>{{ count($users) }}</p>
-                                   <p>Users</p>
-                              </div>
-                         </a>
-                    </div>
-                    <div class="card col-lg-3">
-                         <a href="/houses">
-                              <div class="card-body">
-                                   <p>{{ count($houses) }}</p>
-                                   <p>Houses</p>
-                              </div>
-                         </a>
-                    </div>
-               </div>
-          </div>
+          <table>
+               <thead>
+                    <tr>
+                         <th>ID</th>
+                         <th>Name</th>
+                         <th>Address</th>
+                         <th>Monthly Rent</th>
+                         <th>Daily Rent</th>
+                         <th>Status</th>
+                    </tr>
+               </thead>
+               <tbody>
+                    @foreach($houses as $house)
+                    <tr>
+                         <td>{{ $house->houseId }}</td>
+                         <td>{{ $house->houseName }}</td>
+                         <td>{{ $house->houseArea }}</td>
+                         <td>{{ $house->houseRentPerMonth }}</td>
+                         <td>{{ $house->houseRentPerDay }}</td>
+                         <td>{{ $house->houseStatus }}</td>
+                    </tr>
+                    @endforeach
+               </tbody>
+          </table>
      </div>
 
 </body>
