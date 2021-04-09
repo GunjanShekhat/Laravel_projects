@@ -73,6 +73,13 @@
      .links a {
           margin-left: 4px;
      }
+
+     /* .eye {
+          top: 30%;
+          padding: 10px;
+          background-color: #FFC312;
+          color: black;
+     } */
      </style>
 </head>
 
@@ -102,38 +109,60 @@
                     <div class="card-body">
                          <form action="userCreate" method="POST">
                               @csrf
+                              @if($errors->has('u_name'))
+                              <span id="nameresponse" style="color:red;">{{ $errors->first('u_name') }}</span>
+                              @endif
+                              <span id="nameresponse" style="color:red;"></span>
                               <div class="input-group form-group">
                                    <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-user"></i></span>
                                    </div>
-                                   <input type="text" class="form-control" name="u_name" placeholder="username"
-                                        required>
-
+                                   <input type="text" class="form-control" id="u_name" name="u_name"
+                                        placeholder="username" required>
                               </div>
+
+                              @if($errors->has('u_password'))
+                              <span id="passwordresponse" style="color:red;">{{ $errors->first('u_password') }}</span>
+                              @endif
                               <div class="input-group form-group">
                                    <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-key"></i></span>
                                    </div>
-                                   <input type="password" class="form-control" name="u_password" placeholder="password"
-                                        required>
+                                   <input type="password" class="form-control" name="u_password" id="u_password"
+                                        placeholder=" password" required>
+                                   <div class="input-group-prepend">
+                                        <span class="input-group-text eye"><i id="p_eye" class="fas fa-eye"></i></span>
+                                   </div>
                               </div>
 
+                              @if($errors->has('u_email'))
+                              <span id="emailresponse" style="color:red;">{{ $errors->first('u_email') }}</span>
+                              @endif
+                              <span id="emailresponse" style="color:red;"></span>
                               <div class="input-group form-group">
                                    <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                                    </div>
-                                   <input type="text" class="form-control" name="u_email"
-                                        placeholder="Enter your Email (used for login)" required>
+                                   <input type="text" class="form-control" id="u_email" name="u_email"
+                                        placeholder="Enter your Email (use for login)" required>
+
                               </div>
 
+                              @if($errors->has('u_contact'))
+                              <span id="contactresponse" style="color:red;">{{ $errors->first('u_contact') }}</span>
+                              @endif
+                              <span id="contactresponse" style="color:red;"></span>
                               <div class="input-group form-group">
                                    <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-phone"></i></span>
                                    </div>
-                                   <input type="text" class="form-control" name="u_contact" placeholder="Contact Number"
-                                        required>
+                                   <input type="text" class="form-control" id="u_contact" name="u_contact"
+                                        placeholder="Contact Number" required>
                               </div>
 
+                              @if($errors->has('u_address'))
+                              <span id="addressresponse" style="color:red;">{{ $errors->first('u_address') }}</span>
+                              @endif
                               <div class="input-group form-group">
                                    <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="far fa-address-card"></i></span>
@@ -142,6 +171,9 @@
                                         placeholder="Permanent Address Here" required>
                               </div>
 
+                              @if($errors->has('u_area'))
+                              <span id="arearesponse" style="color:red;">{{ $errors->first('u_area') }}</span>
+                              @endif
                               <div class="input-group form-group">
                                    <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
@@ -150,6 +182,9 @@
                                         required>
                               </div>
 
+                              @if($errors->has('u_city'))
+                              <span id="cityresponse" style="color:red;">{{ $errors->first('u_city') }}</span>
+                              @endif
                               <div class="input-group form-group">
                                    <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-building"></i></span>
@@ -158,6 +193,9 @@
                                         required>
                               </div>
 
+                              @if($errors->has('u_state'))
+                              <span id="stateresponse" style="color:red;">{{ $errors->first('u_state') }}</span>
+                              @endif
                               <div class="input-group form-group">
                                    <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-city"></i></span>
@@ -165,6 +203,10 @@
                                    <input type="text" class="form-control" name="u_state" placeholder="State" required>
                               </div>
 
+                              @if($errors->has('u_occupation'))
+                              <span id="occupationresponse"
+                                   style="color:red;">{{ $errors->first('u_occupation') }}</span>
+                              @endif
                               <div class="input-group form-group">
                                    <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
@@ -172,8 +214,9 @@
                                    <input type="text" class="form-control" name="u_occupation"
                                         placeholder="Your Occupation Here" required>
                               </div>
+
                               <div class="form-group">
-                                   <input type="submit" value="Sign up" class="btn login_btn">
+                                   <input type="submit" id="submitbtn" value="Sign up" class="btn login_btn" disabled>
                               </div>
                          </form>
                     </div>
@@ -189,6 +232,79 @@
           </div>
      </div>
 
+     <script>
+     $(document).on('click', '.eye', function() {
+          var txtPassword = document.getElementById('u_password');
+          if (txtPassword.type === "password") {
+               txtPassword.type = "text";
+
+               var p1 = document.getElementById('p_eye');
+               p1.setAttribute('class', 'fa fa-eye-slash');
+          } else {
+               txtPassword.type = "password";
+
+               var p1 = document.getElementById('p_eye');
+               p1.setAttribute('class', 'fa fa-eye');
+          }
+     });
+     var uname = 0,
+          uemail = 0,
+          ucontact = 0;
+     $('#u_email').on('keyup blur', function() {
+          var mailformat = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+          if ($('#u_email').val() == '') {
+               uemail = 0;
+               validate();
+               $("#emailresponse").html("This field cannot be left empty");
+          } else if (!($('#u_email').val().match(mailformat))) {
+               uemail = 0;
+               validate();
+               $("#emailresponse").html("Invalid Email Address");
+          } else {
+               uemail = 1;
+               validate();
+               $("#emailresponse").html("");
+          }
+     });
+
+     $('#u_contact').on('keyup blur', function() {
+          var phoneno = /^\d{10}$/;
+          if ($('#u_contact').val() == '') {
+               ucontact = 0;
+               validate();
+               $("#contactresponse").html("This field cannot be left empty");
+          } else if (!($('#u_contact').val().match(phoneno))) {
+               ucontact = 0;
+               validate();
+               $("#contactresponse").html("Invalid Mobile Number");
+          } else {
+               ucontact = 1;
+               validate();
+               $("#contactresponse").html("");
+          }
+     });
+
+     $('#u_name').on('keyup blur', function() {
+          if ($('#u_name').val() == '') {
+               uname = 0;
+               validate();
+               $("#nameresponse").html("This field cannot be left empty");
+
+          } else {
+               uname = 1;
+               validate();
+               $("#nameresponse").html("");
+          }
+     });
+
+     function validate() {
+          if (uname == 0 || uemail == 0 || ucontact == 0) {
+               $("#submitbtn").attr("disabled", true);
+          } else {
+               $("#submitbtn").attr("disabled", false);
+          }
+     }
+     </script>
 </body>
 
 </html>

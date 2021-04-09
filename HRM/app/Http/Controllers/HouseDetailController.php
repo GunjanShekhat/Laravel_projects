@@ -20,6 +20,16 @@ class HouseDetailController extends Controller
         }
     }
 
+    public function bookedHouses(){
+        if (session()->has('user_email')) {
+            $house = contractDetail::where('userIdForeign',session()->get('user_id'))->orderBy('contractId','DESC')->get();
+            return view('User/bookedHouses',compact('house'));
+        }
+        else{
+            return redirect('/login');
+        }
+    }
+
     public function getHouses(){
         $house = houseDetail::orderBy('houseId','DESC')->get();
         $cheapHouse = houseDetail::orderBy('houseRentPerMonth')->get();

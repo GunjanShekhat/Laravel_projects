@@ -33,6 +33,8 @@
                                         </li>
                                         <li><a href="myHouses">My Houses</a>
                                         </li>
+                                        <li><a href="bookedHouses">My Booked Houses</a>
+                                        </li>
                                         <li><a href="logout">Logout</a>
                                         </li>
                                    </ul>

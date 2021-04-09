@@ -42,6 +42,7 @@ Route::post('userUpdate',[UserController::class,'updateProfile']);
 Route::get('browse_houses',[HouseDetailController::class,'getHouses']);
 
 Route::get('/myHouses',[HouseDetailController::class,'getMyHouse'])->name('myHouses');
+Route::get('/bookedHouses',[HouseDetailController::class,'bookedHouses']);
 Route::get('/addHouse', function () {
     if (session()->has('user_email')) {
         return view('User/addHouse');

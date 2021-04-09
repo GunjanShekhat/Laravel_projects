@@ -29,16 +29,46 @@ class UserController extends Controller
     }
 
     function userCreate(Request $req){
+
+        $validatedData = $req->validate([
+                'u_name' => 'required|alpha_num',
+                'u_password' => 'required|min:6',
+                'u_email' => 'required|email',
+                'u_contact'=> 'required|digits:10|numeric',
+                'u_address'=>'required',
+                'u_area'=>'required',
+                'u_city' => 'required|alpha',
+                'u_state'=>'required|alpha',
+                'u_occupation'=>'required|alpha',
+            ], [
+                'u_name.required' => 'Name is required',
+                'u_password.required' => 'Password is required',
+                'u_password.min' => 'Password has to be :min chars long',
+                'u_email.email' => 'Email should be in proper format',
+                'u_contact.required' => 'Contact is required',
+                'u_contact.digits' => 'Contact has to be :min digits long',
+                'u_contact'=>'Contact should be numeric only',
+                'u_address'=>'Address is required',
+                'u_area'=>'Area is required',
+                'u_city'=>'City is required',
+                'u_city.alpha'=>'City should be alphabetic name only',
+                'u_state'=>'State is required',
+                'u_state.alpha'=>'State should be alphabetic name only',
+                'u_occupation'=>'Occupation is required',
+                'u_occupation.alpha'=>'Occupation should be alphabetic name only'
+            ]);
+
+            
         $user = new User();
-        $user->userName = $req->u_name;
-        $user->userEmail = $req->u_email;
-        $user->userPassword = $req->u_password;
-        $user->userContactNo = $req->u_contact;
-        $user->userAddress = $req->u_address;
-        $user->userArea = $req->u_area;
-        $user->userCity = $req->u_city;
-        $user->userState = $req->u_state;
-        $user->userOccupation = $req->u_occupation;
+        $user->userName = $validatedData['u_name'];
+        $user->userEmail = $validatedData['u_email'];
+        $user->userPassword = bcrypt($validatedData['u_password']);
+        $user->userContactNo = $validatedData['u_contact'];
+        $user->userAddress = $validatedData['u_address'];
+        $user->userArea = $validatedData['u_area'];
+        $user->userCity = $validatedData['u_city'];
+        $user->userState = $validatedData['u_state'];
+        $user->userOccupation = $validatedData['u_occupation'];
         $user->save();
         return redirect('login')->with('user_created','User has been successfully Created!!');
     }
