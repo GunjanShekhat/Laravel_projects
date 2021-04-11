@@ -4,6 +4,11 @@
 <head>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="stylesheet" href="css/bootstrap.css" />
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+          integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <script src="http://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js" defer></script>
+     <script src="{{asset('js/ddtf.js')}}"></script>
      <style>
      .card {
           margin: 5px;
@@ -74,7 +79,41 @@
           }
      }
 
+     form.example input[type=text] {
+          margin-top: 20px;
+          padding: 10px;
+          font-size: 17px;
+          border: 1px solid grey;
+          float: left;
+          width: 80%;
+          background: #f1f1f1;
+     }
+
+     form.example button {
+          margin-top: 20px;
+          float: left;
+          width: 20%;
+          padding: 10px;
+          background: #4CAF50;
+          color: white;
+          font-size: 17px;
+          border: 1px solid grey;
+          border-left: none;
+          cursor: pointer;
+     }
+
+     form.example button:hover {
+          background: darkgreen;
+     }
+
+     form.example::after {
+          content: "";
+          clear: both;
+          display: table;
+     }
+
      table {
+          margin-top: 20px;
           border-collapse: collapse;
           width: 100%;
      }
@@ -97,7 +136,13 @@
      </div>
 
      <div class="content">
-          <table>
+          <form class="example">
+               <input type="text" placeholder="Search using User Names or User Emails" class="searchTextBox" id="search"
+                    name="search">
+               <button id="searchButton" onClick="searchh()"><i class="fa fa-search"></i></button>
+          </form>
+
+          <table id="tableFormat">
                <thead>
                     <tr>
                          <th>ID</th>
@@ -107,7 +152,7 @@
                          <th>Contact</th>
                     </tr>
                </thead>
-               <tbody>
+               <tbody id="tableBody">
                     @foreach($users as $user)
                     <tr>
                          <td>{{ $user->userId }}</td>
@@ -120,7 +165,42 @@
                </tbody>
           </table>
      </div>
+     <script>
+     jQuery('#tableFormat').ddTableFilter();
+     </script>
 
+     <script type=" text/javascript">
+     function searchh() {
+          var searchKey = $('#search').val();
+          console.log(searchKey);
+          $.ajax({
+               url: "{{route('search')}}",
+               type: "get",
+               data: {
+                    'searchKey': searchKey
+               },
+               success: function(data) {
+                    $('#tableBody').html(data);
+               }
+          })
+     }
+
+
+     $('#search').on('keyup', function() {
+          var searchKey = $('#search').val();
+          console.log(searchKey);
+          $.ajax({
+               url: "{{route('search')}}",
+               type: "get",
+               data: {
+                    'searchKey': searchKey
+               },
+               success: function(data) {
+                    $('#tableBody').html(data);
+               }
+          })
+     });
+     </script>
 </body>
 
 </html>

@@ -69,6 +69,7 @@ Route::get('About', function () {
 /* -------------------------------ADMIN SIDE ROUTES------------------------------*/
 
 Route::get('/dashboard',[AdminController::class,'dashboard']);
+Route::any('/search',[AdminController::class,'searchResult'])->name('search');
 Route::get('/users',[UserController::class,'allUsers']);
 Route::get('/houses',[HouseDetailController::class,'allHouses']);
 Route::get('/reports',function(){
