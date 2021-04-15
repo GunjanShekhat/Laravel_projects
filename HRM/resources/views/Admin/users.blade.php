@@ -137,6 +137,7 @@
 
      <div class="content">
           <form class="example">
+               @csrf
                <input type="text" placeholder="Search using User Names or User Emails" class="searchTextBox" id="search"
                     name="search">
                <button id="searchButton" onClick="searchh()"><i class="fa fa-search"></i></button>
