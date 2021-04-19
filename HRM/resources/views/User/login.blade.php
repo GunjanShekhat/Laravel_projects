@@ -6,163 +6,197 @@
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Sign In</title>
-     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <link rel="stylesheet" type="text/css"
+          href="http://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,400;0,500;0,700;0,900;1,400&amp;display=swap" />
+     <link rel="stylesheet" href="css/bootstrap.css" />
+     <link rel="stylesheet" href="css/style.css" />
      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
           integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-     <link rel="stylesheet" type="text/css" href="styles.css">
      <style>
-     @import url('https://fonts.googleapis.com/css?family=Numans');
-
-     html,
-     body {
-          background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
-          background-size: cover;
-          background-repeat: no-repeat;
-          height: 100%;
-          font-family: 'Numans', sans-serif;
+     .input-icons i {
+          position: absolute;
      }
 
-     .container {
-          height: 100%;
-          align-content: center;
-     }
-
-     .card {
-          height: auto;
-          margin-top: auto;
-          margin-bottom: auto;
-          width: 400px;
-          background-color: rgba(0, 0, 0, 0.5) !important;
-     }
-
-     .card-header h3 {
-          color: white;
-     }
-
-     .input-group-prepend span {
-          width: 50px;
-          background-color: #FFC312;
-          color: black;
-          border: 0 !important;
-     }
-
-     input:focus {
-          outline: 0 0 0 0 !important;
-          box-shadow: 0 0 0 0 !important;
-
-     }
-
-     .remember {
-          color: white;
-     }
-
-     .remember input {
-          width: 20px;
-          height: 20px;
-          margin-left: 15px;
-          margin-right: 5px;
-     }
-
-     .login_btn {
-          color: black;
-          background-color: #FFC312;
+     .input-icons {
           width: 100%;
-          margin-top: 10px;
+          margin-bottom: 10px;
      }
 
-     .login_btn:hover {
-          color: black;
-          background-color: white;
+     .icon {
+          padding: 10px;
+          min-width: 40px;
      }
 
-     .links {
-          color: white;
-     }
+     .input-field {
 
-     .links a {
-          margin-left: 4px;
+          width: 100%;
+          min-height: 50px;
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 1.1;
+          color: #8c8c8c;
+          background-color: #f5f5f5;
+          background-image: none;
+          border: 1px solid #f5f5f5;
+          border-radius: 0;
+          -webkit-appearance: none;
+          transition: .3s ease-in-out;
+          box-shadow: none;
+          border: 1px solid #f5f5f5;
+          padding: 10px;
      }
      </style>
 </head>
 
 <body>
 
-     @if(Session::has('user_error'))
-     <div class="alert-danger" role="alert" style="margin-top:50px;">
-          <center>
-               {{Session::get('user_error')}}
-          </center>
-     </div>
-     @endif
-     @if(Session::has('pass_error'))
-     <div class="alert-danger" role="alert" style="margin-top:50px;">
-          <center>
-               {{Session::get('pass_error')}}
-          </center>
-     </div>
-     @endif
-     @if(Session::has('user_created'))
-     <div class="alert-success" role="alert" style="margin-top:50px;">
-          <center>
-               {{ Session::get('user_created') }}
-          </center>
-     </div>
-     @endif
-     <div class="d-flex justify-content-center h-100">
-          <div class="card">
-               <div class="card-header">
-                    <h3>Sign In</h3>
-               </div>
-
-               <div class="card-body">
-                    <form action="loginCheck" method="POST">
-                         @csrf
-                         <div class="input-group form-group">
-                              <div class="input-group-prepend">
-                                   <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                              </div>
-                              <input type="text" class="form-control" name="Email" placeholder="Enter User Email Here"
-                                   required>
-
-                         </div>
-                         <div class="input-group form-group">
-                              <div class="input-group-prepend">
-                                   <span class="input-group-text"><i class="fas fa-key"></i></span>
-                              </div>
-                              <input type="password" class="form-control" name="Password"
-                                   placeholder="Enter Password Here" required>
-                         </div>
-                         <div class="row align-items-center remember">
-                              <input type="checkbox">Remember Me
-                         </div>
-                         <div class=" form-group">
-                              <input type="submit" value="Login" class="btn login_btn">
-                         </div>
-                    </form>
-               </div>
-               <div class="card-footer">
-                    <div class="d-flex justify-content-center">
-                         <a href="/">Return to Home</a>
-                    </div>
-
-                    <div class="d-flex justify-content-center links">
-                         Don't have an account?<a href="signup">Sign Up</a>
-                    </div>
-                    <div class="d-flex justify-content-center">
-                         <a href="#">Forgot your password?</a>
-                    </div>
+     @include('User.header');
+     <div class="page">
+          <div id="page-loader">
+               <div class="cssload-container">
+                    <div class="cssload-speeding-wheel"> </div>
                </div>
           </div>
+          <section class="breadcrumbs-custom">
+               <div class="container">
+                    <div class="breadcrumbs-custom__inner">
+                         <ul class="breadcrumbs-custom__path">
+                              <li><a href="index-2.html">Home</a></li>
+                              <li class="active">Login</li>
+                         </ul>
+                    </div>
+               </div>
+          </section>
+          <section class="section-md bg-default">
+               <div class="container">
+                    @if(Session::has('user_error'))
+                    <div class="alert-danger" role="alert" style="margin-top:50px;">
+                         <center>
+                              {{Session::get('user_error')}}
+                         </center>
+                    </div>
+                    @endif
+                    @if(Session::has('pass_error'))
+                    <div class="alert-danger" role="alert" style="margin-top:50px;">
+                         <center>
+                              {{Session::get('pass_error')}}
+                         </center>
+                    </div>
+                    @endif
+                    @if(Session::has('user_created'))
+                    <div class="alert-success" role="alert" style="margin-top:50px;">
+                         <center>
+                              {{ Session::get('user_created') }}
+                         </center>
+                    </div>
+                    @endif
+
+                    <div style="display:flex;justify-content:center;">
+
+                         <form action="loginCheck" style="width:40%;" method="POST">
+                              <center>
+                                   <h4>Login</h4>
+                              </center>
+                              @csrf
+                              <span id="emailresponse" style="color:red;"></span>
+                              <div class="form-wrap">
+                                   <label class="form-label-outside" for="Email">Email:*</label>
+                                   <input class="form-input" type="email" id="Email" name="Email" placeholder="Email" />
+                              </div>
+
+                              <span id="passwordresponse" style="color:red;"></span>
+                              <div class="form-wrap">
+                                   <label class="form-label-outside" for="Password">Password:*</label>
+                                   <span class="input-icons">
+                                        <input type="password" class=" input-field" id="Password" name="Password"
+                                             required>
+                                        <i id="p_eye" class="fas fa-eye icon"></i>
+                                   </span>
+                              </div>
+
+                              <input type="submit" id="submitbtn" class="button" value="Login" style="width:100%;"
+                                   disabled>
+                              <div>
+                                   <div>
+                                        Don't have an account?<a href="signup">Sign Up</a>
+                                   </div>
+                              </div>
+                         </form>
+
+                    </div>
+               </div>
+          </section>
+
      </div>
-     </div>
 
+     @include('User.footer');
 
+     <!-- Javascript-->
+     <script src="js/core.min.js"> </script>
+     <script src="js/script.js"></script>
 
+     <script>
+     $(document).on('click', '.eye', function() {
+          var txtPassword = document.getElementById('Password');
+          if (txtPassword.type === "password") {
+               txtPassword.type = "text";
 
+               var p1 = document.getElementById('p_eye');
+               p1.setAttribute('class', 'fa fa-eye-slash');
+          } else {
+               txtPassword.type = "password";
 
+               var p1 = document.getElementById('p_eye');
+               p1.setAttribute('class', 'fa fa-eye');
+          }
+     });
 
+     var varEmail = 0,
+          varPassword = 0;
+     $('#Email').on('keyup blur', function() {
+          var mailformat = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+          if ($('#Email').val() == '') {
+               varEmail = 0;
+               validate();
+               $("#emailresponse").html("This field cannot be left empty");
+          } else if (!($('#Email').val().match(mailformat))) {
+               varEmail = 0;
+               validate();
+               $("#emailresponse").html("Invalid Email Address");
+          } else {
+               varEmail = 1;
+               validate();
+               $("#emailresponse").html("");
+          }
+     });
+
+     $('#Password').on('keyup blur', function() {
+          if ($('#Password').val() == '') {
+               varPassword = 0;
+               validate();
+               $("#passwordresponse").html("This field cannot be left empty");
+          } else {
+               varPassword = 1;
+               validate();
+               $("#passwordresponse").html("");
+          }
+     });
+
+     function validate() {
+          if (varEmail == 0 || varPassword == 0) {
+               $("#submitbtn").attr("disabled", true);
+               if ($("#submitbtn").hasClass("button-primary")) {
+                    $("#submitbtn").removeClass("button-primary");
+               }
+          } else {
+               $("#submitbtn").attr("disabled", false);
+               if (!($("#submitbtn").hasClass("button-primary"))) {
+                    $("#submitbtn").addClass("button-primary");
+               }
+          }
+     }
+     </script>
 
 </body>
 

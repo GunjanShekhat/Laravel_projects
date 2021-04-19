@@ -62,7 +62,7 @@ class UserController extends Controller
         $user = new User();
         $user->userName = $validatedData['u_name'];
         $user->userEmail = $validatedData['u_email'];
-        $user->userPassword = bcrypt($validatedData['u_password']);
+        $user->userPassword = $validatedData['u_password'];
         $user->userContactNo = $validatedData['u_contact'];
         $user->userAddress = $validatedData['u_address'];
         $user->userArea = $validatedData['u_area'];

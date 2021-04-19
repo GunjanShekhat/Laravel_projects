@@ -55,11 +55,6 @@ class MonthlyReport extends Command
 
         $pdf = PDF::loadView('Admin\housesPDF', compact('houses'))->save(''.$path.'/'.$filename.'.pdf');
         
-
-        
-        // $pdf->download('houses.pdf');
-        // Storage::disk('local')->put('houses.pdf', 'Contents');
-        // return 0;
         $this->info('Successfully Generated Monthly Report');
     }
 }

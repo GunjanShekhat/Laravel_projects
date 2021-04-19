@@ -22,7 +22,7 @@ Route::get('/', function () {
 Route::get('login', function () {
     return view('User/login');
 });
-Route::post('loginCheck',[UserController::class,'loginCheck']);
+Route::post('loginCheck',[UserController::class,'loginCheck'])->name('loginCheck');
 Route::get('/logout', function () {
     if(session()->has('user_email')){
         session()->pull('user_email');
