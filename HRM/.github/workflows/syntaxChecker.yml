@@ -1,0 +1,10 @@
+name: PHP Syntax Checker (Lint)
+on:
+  push:
+    branches:
+      [ $default-branch ]
+jobs:
+  test:
+    runs-on: [self-hosted, linux, x64]
+    steps:
+    - uses: StephaneBour/actions-php-lint@8.0
