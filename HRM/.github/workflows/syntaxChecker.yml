@@ -1,6 +1,0 @@
-name: Demo For GITHUB ACTIONS
-on: [ push ]
-jobs:
-  steps:
-    - name: PHP Syntax Checker (Lint)
-    uses: StephaneBour/actions-php-lint@7.4
