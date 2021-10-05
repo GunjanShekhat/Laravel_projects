@@ -1,0 +1,8 @@
+name: PHP SYNTAX
+on:
+  push:
+    branches: master
+jobs:
+  steps:
+    - name: PHP Syntax Checker (Lint)
+      uses: StephaneBour/actions-php-lint@7.4
