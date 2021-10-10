@@ -7,4 +7,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: PHP Syntax Checker (Lint)
-        uses: StephaneBour/actions-php-lint@7.4
+        uses: StephaneBour/actions-php-lint@7.0
