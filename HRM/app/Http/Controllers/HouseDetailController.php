@@ -16,7 +16,7 @@ class HouseDetailController extends Controller
             return view('User/myHouse',compact('house'));
         }
         else{
-            return redirect('/login')
+            return redirect('/login');
         }
     }
 
@@ -26,7 +26,7 @@ class HouseDetailController extends Controller
             return view('User/bookedHouses',compact('house'));
         }
         else{
-            return redirect('/login');
+            return redirect('/login')
         }
     }
 
