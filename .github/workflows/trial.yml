@@ -8,3 +8,5 @@ jobs:
     steps:
       - name: PHP Syntax Checker (Lint)
         uses: StephaneBour/actions-php-lint@7.0
+        with:
+          dir: './Laravel_projects'
