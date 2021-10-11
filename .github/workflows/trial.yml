@@ -9,4 +9,4 @@ jobs:
       - name: PHP Syntax Checker (Lint)
         uses: StephaneBour/actions-php-lint@7.0
         with:
-          repository: GunjanShekhat/Laravel_projects
+          dir: './HRM/app/Http/Controllers/'
