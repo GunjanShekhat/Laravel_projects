@@ -5,8 +5,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      working-directory: ./HRM
     steps:
       - name: PHP Syntax Checker (Lint)
         uses: StephaneBour/actions-php-lint@7.0
         with:
-          dir: '/'
+          dir: ./HRM
+          working-directory: ${{env.working-directory}}
